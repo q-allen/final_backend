@@ -61,19 +61,19 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # Use environment variables for production (Render), with fallbacks for local development
-IS_PRODUCTION = os.getenv('RENDER', 'false').lower() == 'true'
+
+IS_PRODUCTION = os.getenv('IS_PRODUCTION', 'False') == 'True'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME', 'mv_system' if not IS_PRODUCTION else None),
-        'USER': os.getenv('DB_USER', 'root' if not IS_PRODUCTION else None),
-        'PASSWORD': os.getenv('DB_PASSWORD', '' if not IS_PRODUCTION else None),
-        'HOST': os.getenv('DB_HOST', 'localhost' if not IS_PRODUCTION else None),
-        'PORT': os.getenv('DB_PORT', '3306'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME', 'local_db_name'),
+        'USER': os.getenv('DB_USER', 'local_user'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'local_password'),
+        'HOST': os.getenv('DB_HOST', 'localhost' if not IS_PRODUCTION else ''),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
-
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
