@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,6 +11,8 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-l7z$ghlz)!=*t74zu@-$1mqkx3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+
+load_dotenv()
 ALLOWED_HOSTS = ['.onrender.com'] # We'll tighten this after deployment
 
 # Application definition
@@ -75,16 +78,28 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # }
 IS_PRODUCTION = os.getenv('IS_PRODUCTION', 'False') == 'True'
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'local_db_name'),
-        'USER': os.getenv('DB_USER', 'local_user'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'local_password'),
-        'HOST': os.getenv('DB_HOST', 'localhost' if not IS_PRODUCTION else ''),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
         'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'mv_system',
+#         'USER': 'mv_user',
+#         'PASSWORD': 'qVyB2aiDvjnhpY65zbCpkwx0PGJuWlTW',
+#         'HOST': 'dpg-cvv1kmbe5dus73e5eceg-a',
+#         'PORT': '5432',
+#     }
+# }
+print(DATABASES)
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
