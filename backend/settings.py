@@ -10,7 +10,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-l7z$ghlz)!=*t74zu@-$1mqkx3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']  # We'll tighten this after deployment
+ALLOWED_HOSTS = ['https://mv-backend-1sf1.onrender.com']  # We'll tighten this after deployment
 
 # Application definition
 INSTALLED_APPS = [
